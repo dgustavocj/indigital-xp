@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "strict": true,
+    "outDir": "dist/src", 
+    "sourceMap": false,
+    "target": "es2020",
+    "types": [
+      "node",
+      "jest",
+      "reflect-metadata"
+    ],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "jest.config.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

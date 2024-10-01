@@ -1,0 +1,17 @@
+<mat-sidenav-container class="main-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <mat-nav-list>
+      <!-- Cambia el routerLink de Consultar Reclamos a /claim-list -->
+      <mat-list-item routerLink="/claim-list">Consultar reclamos</mat-list-item>
+
+      <!-- Cambia el routerLink de Crear Reclamo a /claim-create -->
+      <mat-list-item routerLink="/claim-create">Crear Reclamo</mat-list-item>
+
+      <!-- El enlace a Resumen se mantiene igual -->
+      <mat-list-item routerLink="/summary">Resumen</mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

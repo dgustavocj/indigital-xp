@@ -1,0 +1,24 @@
+.main-container {
+  height: 100vh;
+}
+
+.sidenav {
+  background-color: #f5f5f5;
+  width: 250px;
+}
+
+.sidenav mat-list-item {
+  font-size: 16px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.sidenav mat-list-item:hover {
+  background-color: #e0e0e0;
+}
+
+.content {
+  padding: 20px;
+  background-color: #fff;
+  height: 100%;
+}

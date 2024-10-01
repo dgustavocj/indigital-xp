@@ -1,0 +1,47 @@
+<div class="claim-status-change-container">
+    <h2>Actualizar Reclamo</h2>
+    
+    <form [formGroup]="claimForm" (ngSubmit)="updateClaim()" class="claim-form">
+      <div class="form-field">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="status" required>
+            <mat-option value="PEN">Pendiente</mat-option>
+            <mat-option value="REV">En Revisión</mat-option>
+            <mat-option value="CER">Cerrado</mat-option>
+            <mat-option value="ANU">Anulada</mat-option>
+          </mat-select>
+          <mat-error *ngIf="claimForm.get('status')?.hasError('required')">
+            El estado es requerido
+          </mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="form-field">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Comentario del asesor</mat-label>
+          <input matInput formControlName="advisor_comment" placeholder="Ingresa el comentario">
+        </mat-form-field>
+      </div>
+  
+      <div class="form-field">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Correo del asesor</mat-label>
+          <input matInput formControlName="advisor_email" placeholder="Ingresa el correo" required>
+          <mat-error *ngIf="claimForm.get('advisor_email')?.hasError('email')">
+            El formato del correo no es válido
+          </mat-error>
+          <mat-error *ngIf="claimForm.get('advisor_email')?.hasError('required')">
+            El correo del asesor es requerido
+          </mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="claimForm.invalid">
+          Actualizar Reclamo
+        </button>
+      </div>
+    </form>
+  </div>
+  

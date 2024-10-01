@@ -1,0 +1,43 @@
+services:
+  postgres:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile  # Si decides mantener el nombre en minúsculas
+    container_name: db
+    restart: always
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data 
+      - ./docker/database:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: indigital_db
+      POSTGRES_USER: pgadmin
+      POSTGRES_PASSWORD: pgadmin 
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U postgres' ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - '5432:5432'
+    networks:
+      - db_network
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    restart: always
+    ports:
+      - '5050:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - db_network
+volumes:
+  postgres_data:
+  pgadmin_data:
+
+networks:
+  db_network:
+    driver: bridge

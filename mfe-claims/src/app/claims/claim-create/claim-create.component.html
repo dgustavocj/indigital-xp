@@ -1,0 +1,62 @@
+<!-- claim-create.component.html -->
+<div class="claim-create-container">
+  <form [formGroup]="claimForm" (ngSubmit)="onSubmit()" class="claim-form">
+    
+    <div class="form-field">
+      <mat-form-field class="full-width">
+        <mat-label>Empresa</mat-label>
+        <input matInput formControlName="company_id" required>
+        <mat-error *ngIf="claimForm.get('company_id')?.hasError('required')">
+          La empresa es requerida
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field class="full-width">
+        <mat-label>Motivo</mat-label>
+        <input matInput formControlName="claim_reason_id" required>
+        <mat-error *ngIf="claimForm.get('claim_reason_id')?.hasError('required')">
+          El motivo es requerido
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field class="full-width">
+        <mat-label>Descripción</mat-label>
+        <input matInput formControlName="claim_description">
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field class="full-width">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput formControlName="customer_email" required>
+        <mat-error *ngIf="claimForm.get('customer_email')?.hasError('email')">
+          El formato del correo no es válido
+        </mat-error>
+        <mat-error *ngIf="claimForm.get('customer_email')?.hasError('required')">
+          El correo es requerido
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field class="full-width">
+        <mat-label>Estado</mat-label>
+        <input matInput formControlName="estado" readonly>
+      </mat-form-field>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="claimForm.invalid">
+        Crear Reclamo
+      </button>
+
+      <button mat-stroked-button color="warn" type="button" (click)="resetForm()">
+        Limpiar Formulario
+      </button>
+    </div>
+  </form>
+</div>
