@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: Indigital API
+  description: API para manejar "claims" y verificar el estado del sistema.
+  version: "1.0.0"
+servers:
+  - url: http://localhost:8080
+paths:
+  /claims:
+    get:
+      summary: Obtener lista de "claims"
+      operationId: getClaims
+      responses:
+        '200':
+          description: Listado de "claims" obtenido exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          required: false
+          description: ID del "claim"
+    post:
+      summary: Crear un nuevo "claim"
+      operationId: createClaim
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                company_id:
+                  type: integer
+                claim_reason_id:
+                  type: integer
+                claim_description:
+                  type: string
+                customer_email:
+                  type: string
+      responses:
+        '201':
+          description: "Claim creado exitosamente."
+    put:
+      summary: Actualizar un "claim"
+      operationId: updateClaim
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                claim_id:
+                  type: integer
+                status:
+                  type: string
+                advisor_comment:
+                  type: string
+                advisor_email:
+                  type: string
+      responses:
+        '200':
+          description: "Claim actualizado exitosamente."
+
+  /health:
+    get:
+      summary: Verificar el estado del servicio
+      operationId: checkHealth
+      responses:
+        '200':
+          description: El servicio está en funcionamiento.
