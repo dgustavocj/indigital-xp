@@ -5,7 +5,7 @@
 Para comenzar, clone el repositorio en su máquina local:
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+ git clone git@github.com:dgustavocj/indigital-xp.git
 ```
 
 ## Requerimientos Mínimos del Proyecto
